@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lohit Allavarapu · UI/UX & iOS Designer</title>
+  <meta name="description" content="Portfolio of Lohit Allavarapu, UI/UX designer and iOS mobile app developer. Case studies, projects, and contact." />
+  <meta property="og:title" content="Lohit Allavarapu · UI/UX & iOS Designer" />
+  <meta property="og:description" content="Case studies, prototypes, and iOS app designs by [Your Name]." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/preview.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #111218;
+      --text: #eaeef2;
+      --muted: #b7c0c8;
+      --brand: #7c5cff;
+      --brand-2: #50e3c2;
+      --stroke: #1f2330;
+      --ring: rgba(124, 92, 255, 0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    [data-theme="light"] {
+      --bg: #f7f8fa;
+      --panel: #ffffff;
+      --text: #0e1320;
+      --muted: #4a5568;
+      --brand: #6b4eff;
+      --brand-2: #00c5a1;
+      --stroke: #e6e8ef;
+      --ring: rgba(107, 78, 255, 0.35);
+      --shadow: 0 8px 24px rgba(17, 24, 39, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg); color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: saturate(140%) blur(10px);
+      background: color-mix(in srgb, var(--bg), transparent 65%);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0;
+    }
+    .brand { display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:0.2px; }
+    .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: 0 0 0 4px var(--ring); }
+    .nav a { margin-left: 18px; font-weight: 600; color: var(--text); opacity: .9; }
+    .theme-toggle { border:1px solid var(--stroke); background: var(--panel); color: var(--text); border-radius: 999px; padding:8px 12px; cursor:pointer; box-shadow: var(--shadow); }
+
+    .hero { display:grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: center; padding: 56px 0; }
+    .hero .card { background: linear-gradient(180deg, color-mix(in srgb, var(--panel), transparent 5%), var(--panel)); border: 1px solid var(--stroke); border-radius: 20px; padding: 28px; box-shadow: var(--shadow); }
+    .eyebrow { display:inline-flex; align-items:center; gap:10px; font-weight:700; color: var(--brand); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; background: color-mix(in srgb, var(--brand), transparent 85%); border:1px solid color-mix(in srgb, var(--brand), transparent 60%); padding:6px 10px; border-radius:999px; }
+    h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.1; margin: 12px 0 10px; }
+    p.lead { font-size: clamp(15px, 2.6vw, 18px); color: var(--muted); margin: 0 0 16px; }
+    .cta { display:flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding: 12px 16px; border-radius: 12px; border:1px solid var(--stroke); background: var(--panel); color: var(--text); font-weight:700; cursor:pointer; box-shadow: var(--shadow); }
+    .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; border:none; }
+    .stats { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top: 22px; }
+    .stat { background: var(--panel); border:1px solid var(--stroke); padding:16px; border-radius:14px; text-align:center; }
+    .stat b { font-size: 22px; display:block; }
+
+    .section { padding: 28px 0 10px; }
+    .section h2 { font-size: 26px; margin: 0 0 12px; }
+    .kicker { color: var(--muted); margin-top: -4px; margin-bottom: 14px; }
+
+    .skills { display:grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .tag { display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; border: 1px solid var(--stroke); background: var(--panel); font-weight:600; }
+
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .project { grid-column: span 6; background: var(--panel); border:1px solid var(--stroke); border-radius: 16px; overflow: hidden; display:flex; flex-direction: column; }
+    .project .thumb { aspect-ratio: 16/9; background: linear-gradient(135deg, color-mix(in srgb, var(--brand), transparent 65%), color-mix(in srgb, var(--brand-2), transparent 65%)); display:flex; align-items:center; justify-content:center; font-weight:800; letter-spacing:1px; }
+    .project .body { padding: 14px 16px 18px; }
+    .project .meta { color: var(--muted); font-size: 14px; }
+    .chips { display:flex; gap:8px; flex-wrap: wrap; margin-top: 10px; }
+    .chip { border:1px dashed var(--stroke); padding:6px 8px; border-radius:999px; font-size: 12px; color: var(--muted); }
+
+    .process { display:grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+    .step { background: var(--panel); border:1px solid var(--stroke); border-radius: 12px; padding: 14px; }
+    .step .num { width:28px; height:28px; border-radius:999px; display:inline-grid; place-items:center; background: color-mix(in srgb, var(--brand), transparent 75%); border:1px solid color-mix(in srgb, var(--brand), transparent 40%); font-weight:700; margin-right: 6px; }
+
+    .about { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .about .card { background: var(--panel); border:1px solid var(--stroke); border-radius: 14px; padding: 16px; }
+
+    .contact { display:grid; grid-template-columns: 1.1fr 1fr; gap: 16px; }
+    form { display:grid; gap:12px; }
+    .field { display:grid; gap:6px; }
+    input, textarea { padding: 12px; border-radius: 10px; border:1px solid var(--stroke); background: var(--panel); color: var(--text); }
+    input:focus, textarea:focus, .btn:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
+
+    .footer { margin: 36px 0 60px; display:flex; align-items:center; justify-content: space-between; color: var(--muted); }
+
+    .pill { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--stroke); background: var(--panel); padding:8px 12px; border-radius:999px; }
+
+    .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus { position: static; width:auto; height:auto; margin: 10px; }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero { grid-template-columns: 1fr; }
+      .contact, .about { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: repeat(2,1fr); }
+      .process { grid-template-columns: repeat(2,1fr); }
+      .project { grid-column: span 12; }
+      .stats { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 560px) {
+      .skills { grid-template-columns: 1fr; }
+      .process { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav">
+    <div class="container nav-inner" role="navigation" aria-label="Primary">
+      <div class="brand" aria-label="Home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Lohit Allavarapu</span>
+      </div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀︎/☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <div>
+        <span class="eyebrow">UI/UX · iOS Design</span>
+        <h1>Designing calm, intuitive mobile experiences.</h1>
+        <p class="lead">I’m <strong>Lohit Allavarapu</strong>, a UI/UX designer and aspiring iOS app developer passionate about creating intuitive, visually engaging, and user‑centered experiences. I transform ideas into seamless digital journeys and am open to internships, junior roles, and freelance projects.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">View my work</a>
+          <a class="btn" href="[your-resume.pdf]" target="_blank" rel="noopener">Download résumé</a>
+          <span class="pill">📍 Based in Vizianagaram, Andhra Pradesh, India</span>
+        </div>
+        <div class="stats" aria-label="Quick stats">
+          <div class="stat"><b>10+</b><span>Concept UIs</span></div>
+          <div class="stat"><b>3</b><span>Case Studies</span></div>
+          <div class="stat"><b>Figma</b><span>Primary Tool</span></div>
+        </div>
+      </div>
+      <div class="card" aria-label="Showcase">
+        <img src="profile.jpg" alt="Lohit Allavarapu profile photo" />
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" aria-label="Skills">
+      <h2>Core skills</h2>
+      <p class="kicker">I design with a blend of craft and systems thinking.</p>
+      <div class="skills">
+        <div class="tag">Wireframing & Prototyping</div>
+        <div class="tag">User Research & Personas</div>
+        <div class="tag">Usability Testing</div>
+        <div class="tag">iOS HIG & Patterns</div>
+        <div class="tag">Information Architecture</div>
+        <div class="tag">SwiftUI (Basics)</div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="section" aria-label="Selected work">
+      <h2>Selected work</h2>
+      <p class="kicker">Case studies that show how I think and what I ship.</p>
+      <div class="grid">
+        <!-- Project Card Template (duplicate & edit) -->
+        <article class="project" aria-labelledby="proj1-title">
+          <div class="thumb">Jewellery Redesign</div>
+          <div class="body">
+            <h3 id="proj1-title">Jewellery Product Page Redesign</h3>
+            <p class="meta">End-to-end redesign · Figma prototype · March 2024 – April 2024</p>
+            <div class="chips">
+              <span class="chip">Image-first gallery</span>
+              <span class="chip">Variants (metal/size)</span>
+              <span class="chip">CTA emphasis</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="#" data-modal="proj1">Read case study</a>
+              <a class="btn" href="https://www.behance.net/gallery/168568869/UX-case-study-jewellery-product-page-Re-design" target="_blank" rel="noopener noreferrer external" onclick="window.open(this.href,'_blank','noopener'); return false;">View prototype ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" aria-labelledby="proj2-title">
+          <div class="thumb">Coffee App</div>
+          <div class="body">
+            <h3 id="proj2-title">Coffee House Platform / App Design</h3>
+            <p class="meta">Ordering & branding system · Figma · June 2023 – August 2023</p>
+            <div class="chips">
+              <span class="chip">Menu clarity</span>
+              <span class="chip">Customization flow</span>
+              <span class="chip">Checkout UX</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="#" data-modal="proj2">Read case study</a>
+              <a class="btn" href="https://www.behance.net/gallery/159326775/coffee-house-case-study" target="_blank" rel="noopener noreferrer external" onclick="window.open(this.href,'_blank','noopener'); return false;">Live prototype ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project" aria-labelledby="proj3-title">
+          <div class="thumb">Portfolio</div>
+          <div class="body">
+            <h3 id="proj3-title">Personal Portfolio Website</h3>
+            <p class="meta">Design system + responsive build · 2025</p>
+            <div class="chips">
+              <span class="chip">Design tokens</span>
+              <span class="chip">Perf-first</span>
+              <span class="chip">Dark mode</span>
+            </div>
+            <div class="cta" style="margin-top:12px">
+              <a class="btn" href="#" data-modal="proj3">Read case study</a>
+              <a class="btn" href="#">Source code ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="section" aria-label="Design process">
+      <h2>My process</h2>
+      <p class="kicker">Flexible, hypothesis-driven, and user‑centric.</p>
+      <div class="process">
+        <div class="step"><span class="num">1</span><strong>Discover:</strong> Stakeholder chats, problem framing, quick audits.</div>
+        <div class="step"><span class="num">2</span><strong>Define:</strong> Jobs-to-be-done, success metrics, north-star flow.</div>
+        <div class="step"><span class="num">3</span><strong>Design:</strong> Wireframes → hi‑fi mockups → interactive prototypes.</div>
+        <div class="step"><span class="num">4</span><strong>Validate:</strong> Usability tests, iterate, handoff with specs.</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about" aria-label="About me">
+      <div class="card">
+        <h2>About me</h2>
+        <p>I’m <strong>Lohit Allavarapu</strong>, a UI/UX designer and aspiring iOS app developer with a foundation in visual design and a love for interaction details. I follow Apple’s Human Interface Guidelines and focus on accessibility (WCAG) and motion sensitivity.</p>
+        <p>Education: B.Tech in Electrical & Electronics Engineering, JNTU Kakinada – MVGR College of Engineering.</p>
+        <p class="kicker">Currently exploring: micro‑interactions and native iOS patterns in SwiftUI.</p>
+      </div>
+      <div class="card">
+        <h2>Toolbox</h2>
+        <div class="skills">
+          <div class="tag">Figma</div>
+          <div class="tag">Adobe XD</div>
+          <div class="tag">Sketch</div>
+          <div class="tag">Photoshop</div>
+          <div class="tag">Illustrator</div>
+          <div class="tag">Xcode</div>
+          <div class="tag">SwiftUI (basic)</div>
+          <div class="tag">Miro</div>
+          <div class="tag">Notion</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact" aria-label="Contact">
+      <div>
+        <h2>Let’s collaborate</h2>
+        <p class="kicker">Open to internships, junior roles, or freelance projects.</p>
+        <div class="tag" style="margin:12px 0; display:inline-flex;">📧 <strong style="margin-left:6px"><a href="mailto:allavarapulohit@gmail.com">allavarapulohit@gmail.com</a></strong></div>
+        <p>Prefer a form? Drop a message—I'll reply within 24–48 hours.</p>
+      </div>
+      <div class="card">
+        <form action="https://formspree.io/f/your-id" method="POST" aria-label="Contact form">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Lohit Allavarapu. All rights reserved.</span>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="pill" href="mailto:allavarapulohit@gmail.com">Email</a>
+        <a class="pill" href="https://www.behance.net/lohitnarayan" target="_blank" rel="noopener noreferrer external" onclick="window.open(this.href,'_blank','noopener'); return false;">Behance</a>
+        <a class="pill" href="#" aria-disabled="true" style="opacity:.5; pointer-events:none;">LinkedIn</a>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Simple Modals for Case Study Summaries -->
+  <dialog id="proj1" aria-labelledby="proj1-title-modal">
+    <article class="card" style="max-width:720px; border:1px solid var(--stroke);">
+      <h3 id="proj1-title-modal">Jewellery Product Page Redesign – Case Study (Snapshot)</h3>
+      <p><strong>Context:</strong> Existing jewellery product page lacked clarity, image emphasis, and CTA focus.
+      <br><strong>Role:</strong> UI/UX Designer · <strong>Tools:</strong> Figma · <strong>Duration:</strong> Mar–Apr 2024</p>
+      <ul>
+        <li>Research: heuristic review, competitor benchmarking, light user feedback.</li>
+        <li>Design: wireframes → hi‑fi; improved gallery, variant selection, pricing specs.</li>
+        <li>Testing: interactive prototype; iterations based on usability findings.</li>
+        <li>Outcome: clearer product details, better image interaction, stronger CTA hierarchy.</li>
+      </ul>
+      <div class="cta">
+        <a class="btn primary" href="https://www.behance.net/gallery/168568869/UX-case-study-jewellery-product-page-Re-design" target="_blank" rel="noopener">Open full case study ↗</a>
+        <button class="btn" data-close>Close</button>
+      </div>
+    </article>
+  </dialog>
+
+  <dialog id="proj2" aria-labelledby="proj2-title-modal">
+    <article class="card" style="max-width:720px; border:1px solid var(--stroke);">
+      <h3 id="proj2-title-modal">Coffee House Platform / App – Case Study (Snapshot)</h3>
+      <p><strong>Context:</strong> Many café apps suffer from cluttered menus and confusing ordering flows.
+      <br><strong>Role:</strong> UI/UX Designer · <strong>Tools:</strong> Figma · <strong>Duration:</strong> Jun–Aug 2023</p>
+      <ul>
+        <li>Discovery: competitor benchmarking; user journeys for menu → customize → checkout.</li>
+        <li>Design: low‑fi to hi‑fi; key screens for menu, drink customization, cart, checkout.</li>
+        <li>Testing: clickable prototype; fixed unclear buttons and back navigation issues.</li>
+        <li>Outcome: improved clarity, reduced cognitive load, stronger brand consistency.</li>
+      </ul>
+      <div class="cta">
+        <a class="btn primary" href="https://www.behance.net/gallery/168568869/UX-case-study-jewellery-product-page-Re-design" target="_blank" rel="noopener">Open full case study ↗</a>
+        <button class="btn" data-close>Close</button>
+      </div>
+    </article>
+  </dialog>
+
+  <dialog id="proj3" aria-labelledby="proj3-title-modal">
+    <article class="card" style="max-width:720px; border:1px solid var(--stroke);">
+      <h3 id="proj3-title-modal">Portfolio Website – Case Study (Snapshot)</h3>
+      <p>Built a lightweight, accessible site (no frameworks) scoring 95+ on Lighthouse.</p>
+      <div class="cta">
+        <a class="btn primary" href="#">Open full case study ↗</a>
+        <button class="btn" data-close>Close</button>
+      </div>
+    </article>
+  </dialog>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle with localStorage
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+    themeToggle?.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+
+    // Modal handling
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.getAttribute('data-modal');
+        const dlg = document.getElementById(id);
+        dlg?.showModal();
+      });
+    });
+    document.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', () => btn.closest('dialog')?.close()));
+
+    // Close modals on backdrop click
+    document.querySelectorAll('dialog').forEach(dlg => {
+      dlg.addEventListener('click', (e) => {
+        const rect = dlg.getBoundingClientRect();
+        const inDialog = rect.top <= e.clientY && e.clientY <= rect.top + rect.height && rect.left <= e.clientX && e.clientX <= rect.left + rect.width;
+        if (!inDialog) dlg.close();
+      });
+    });
+  </script>
+  <!-- Force external links (e.g., Behance) to open in a real new tab to avoid iframe/sandbox block errors -->
+  <script>
+    document.querySelectorAll('a[rel~="external"], a[target="_blank"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        // If the environment tries to load in an iframe, explicitly open a new tab
+        if (!this.href.startsWith('#')) {
+          e.preventDefault();
+          window.open(this.href, '_blank', 'noopener');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
